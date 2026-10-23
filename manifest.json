@@ -11,22 +11,40 @@
     "乐谱",
     "音乐"
   ],
-  "version": "0.1.6",
+  "version": "0.1.7",
   "apiVersion": 1,
   "platform": "portable",
   "profile": "web-v1",
   "targets": {
     "desktop": {
-      "minAppVersion": "0.59.1",
-      "required": ["editor.elements.v1", "editor.codecs.v1", "editor.source.v1"],
+      "minAppVersion": "0.59.2",
+      "required": [
+        "sourceEditor"
+      ],
       "optional": [],
-      "elements": { "abc": "edit" }
+      "elements": {
+        "abc": "edit"
+      }
     },
     "android": {
-      "minAppVersion": "0.2.2",
-      "required": ["editor.elements.v1", "editor.codecs.v1", "editor.source.v1"],
+      "minAppVersion": "0.2.3",
+      "required": [
+        "sourceEditor"
+      ],
       "optional": [],
-      "elements": { "abc": "edit" }
+      "elements": {
+        "abc": "edit"
+      }
+    },
+    "ios": {
+      "minAppVersion": "0.2.3",
+      "required": [
+        "sourceEditor"
+      ],
+      "optional": [],
+      "elements": {
+        "abc": "edit"
+      }
     }
   },
   "format": "cjs",

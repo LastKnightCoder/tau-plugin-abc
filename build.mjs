@@ -12,7 +12,7 @@ import {
 import path from "node:path";
 import { randomUUID, createHash } from "node:crypto";
 import { collectSkills } from "./skills.mjs";
-import { validatePortableDistributionManifest } from "@tau/plugins/portable";
+import { buildPortablePluginManifest } from "@tau/plugins/portable";
 
 const manifest = JSON.parse(await readFile("manifest.json", "utf8"));
 if (!/^[a-z0-9]+(?:[.-][a-z0-9]+)+$/.test(manifest.id))
@@ -87,7 +87,7 @@ try {
   );
   if (manifest.sync !== undefined)
     throw new Error("同步提供方应在渲染入口注册，不再支持Node后台入口");
-  const skills = manifest.formatVersion === 3 ? { ids: [], files: [] } : await collectSkills(staging);
+  const skills = await collectSkills(staging);
   const integrity = {};
   for (const file of skills.files)
     integrity[file] = createHash("sha256")
@@ -97,8 +97,7 @@ try {
     integrity[file] = createHash("sha256")
       .update(await readFile(path.join(staging, file)))
       .digest("hex");
-  const packagedManifest = { ...manifest, ...(skills.ids.length ? { skills: skills.ids } : {}), integrity, ...(styles ? { styles: "main.css" } : {}) };
-  if (manifest.formatVersion === 3) validatePortableDistributionManifest(packagedManifest);
+  const packagedManifest = buildPortablePluginManifest({ ...manifest, ...(skills.ids.length ? { skills: skills.ids } : {}), integrity, ...(styles ? { styles: "main.css" } : {}) });
   await writeFile(
     path.join(staging, "manifest.json"),
     JSON.stringify(
