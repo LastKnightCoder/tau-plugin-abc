@@ -1,9 +1,9 @@
 # AI 开发指南
 
-- 本分支为跨端 0.1.6 发行准备，使用 SDK 0.36.0/UI 0.4.0 与格式 3。同一 ZIP 声明 desktop ≥0.59.1 和 Android ≥0.2.2，保留插件/节点身份，不打包 Skill；平台适配与测试由作者负责。下文旧模板版本说明不覆盖本分支清单。
+- 使用 SDK 0.37.0 候选与统一作者清单，同包声明 desktop/android/ios，保留节点身份与纯 Markdown Skill；实际设备验收独立记录，先不发布。
 
 - 先阅读 DEVELOPMENT.md、API.md、manifest.json 和 src/index.tsx，理解现有示例后再修改。
-- 定义文档节点前阅读 EDITOR.md，使用静态 editorExtensions 并声明 manifest.editor；渲染代码须能在浏览器运行，不为移动端或网页另写渲染组件。
+- 定义文档节点前阅读 EDITOR.md，使用静态 editorExtensions 并在作者清单 editor.elements 声明支持等级；渲染代码须能在浏览器运行，不为移动端或网页另写渲染组件。
 - 本模板使用 SDK 0.16.0、Tau 0.59.0。白板扩展见 WHITEBOARD.md；同步存储插件见 SYNC.md；编译与转换接口见 SERVICES.md。静态组件通过独立 usePluginServices 获取可选服务，博客回退缓存或源码；不改变 useSourceBlock 的职责。
 - 使用 AI 前阅读 AI.md，通过 ai.features 声明功能，由用户分配模型并授权。仅调用 context.ai，不索取用户的 API Key；处理取消、未授权和额度不足，不循环重试。
 - 提供 AI 工具前阅读 MCP.md，通过 context.mcp.register 注册本地 tools 或外部 transport；需要 SDK 0.13.0 和对应客户端。

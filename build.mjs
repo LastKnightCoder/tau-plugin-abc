@@ -97,7 +97,7 @@ try {
     integrity[file] = createHash("sha256")
       .update(await readFile(path.join(staging, file)))
       .digest("hex");
-  const packagedManifest = buildPortablePluginManifest({ ...manifest, ...(skills.ids.length ? { skills: skills.ids } : {}), integrity, ...(styles ? { styles: "main.css" } : {}) });
+  const packagedManifest = buildPortablePluginManifest(manifest, { main: "main.js", ...(skills.ids.length ? { skills: skills.ids } : {}), integrity, ...(styles ? { styles: "main.css" } : {}) });
   await writeFile(
     path.join(staging, "manifest.json"),
     JSON.stringify(
