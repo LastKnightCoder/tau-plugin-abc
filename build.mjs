@@ -12,6 +12,7 @@ import {
 import path from "node:path";
 import { randomUUID, createHash } from "node:crypto";
 import { collectSkills } from "./skills.mjs";
+import { validatePortableDistributionManifest } from "@tau/plugins/portable";
 
 const manifest = JSON.parse(await readFile("manifest.json", "utf8"));
 if (!/^[a-z0-9]+(?:[.-][a-z0-9]+)+$/.test(manifest.id))
@@ -86,7 +87,7 @@ try {
   );
   if (manifest.sync !== undefined)
     throw new Error("同步提供方应在渲染入口注册，不再支持Node后台入口");
-  const skills = await collectSkills(staging);
+  const skills = manifest.formatVersion === 3 ? { ids: [], files: [] } : await collectSkills(staging);
   const integrity = {};
   for (const file of skills.files)
     integrity[file] = createHash("sha256")
@@ -96,10 +97,12 @@ try {
     integrity[file] = createHash("sha256")
       .update(await readFile(path.join(staging, file)))
       .digest("hex");
+  const packagedManifest = { ...manifest, ...(skills.ids.length ? { skills: skills.ids } : {}), integrity, ...(styles ? { styles: "main.css" } : {}) };
+  if (manifest.formatVersion === 3) validatePortableDistributionManifest(packagedManifest);
   await writeFile(
     path.join(staging, "manifest.json"),
     JSON.stringify(
-      { ...manifest, ...(skills.ids.length ? { skills: skills.ids } : {}), integrity, ...(styles ? { styles: "main.css" } : {}) },
+      packagedManifest,
       null,
       2,
     ),
@@ -131,7 +134,7 @@ try {
     throw new Error("插件包超过中心限制：ZIP 8 MiB，展开 32 MiB");
   console.log(`ZIP ${bytes} 字节，展开 ${expanded} 字节`);
   console.log(
-    `构建完成：${archive}\n运行 pnpm install:local，或将 ZIP 解压至 ~/.editor/plugins，然后在插件管理中刷新列表并启用。`,
+    `构建完成：${archive}\n正式用户通过目标平台的插件中心安装，重新打开应用后生效。`,
   );
 } catch (error) {
   await rm(staging, { recursive: true, force: true });

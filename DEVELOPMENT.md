@@ -2,6 +2,8 @@
 
 本仓库维护 ABC 乐谱插件，基于 Tau 官方模板构建。编辑器契约见 EDITOR.md，发布产物为自包含 CJS 插件包。
 
+本分支发布桌面/Android 共用的格式 3 包：SDK 0.36.0、UI 0.4.0，最低桌面 0.59.1、Android 0.2.2，保留 tau.abc 身份与 abc 节点。渲染、源码编辑和 Markdown codec 共用现有实现；Skill 不进入跨端包，博客分发暂未接入。构建时校验跨端清单，install:local 拒绝写旧桌面目录。下文旧桌面模板步骤仅适用于格式 1 的 main 分支。
+
 ## 准备
 
 - Node.js 22 或更高版本
