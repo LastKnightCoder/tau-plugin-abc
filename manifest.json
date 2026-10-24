@@ -2,32 +2,18 @@
   "id": "tau.abc",
   "name": "ABC 乐谱",
   "description": "在桌面和 Android 文档中插入、编辑和预览 ABC 乐谱。",
-  "categories": [
-    "editor"
-  ],
-  "keywords": [
-    "ABC",
-    "乐谱",
-    "音乐"
-  ],
-  "version": "0.1.7",
-  "requires": [
-    "sourceEditor"
-  ],
-  "editor": {
-    "elements": {
-      "abc": "edit"
-    }
-  },
+  "categories": ["editor"],
+  "keywords": ["ABC", "乐谱", "音乐"],
+  "version": "0.1.8",
   "targets": {
     "desktop": {
-      "minAppVersion": "0.59.2"
+      "minAppVersion": "0.59.4"
     },
     "android": {
-      "minAppVersion": "0.2.3"
+      "minAppVersion": "0.2.4"
     },
     "ios": {
-      "minAppVersion": "0.2.3"
+      "minAppVersion": "0.2.4"
     }
   }
 }
