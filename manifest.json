@@ -4,7 +4,7 @@
   "description": "在桌面和 Android 文档中插入、编辑和预览 ABC 乐谱。",
   "categories": ["editor"],
   "keywords": ["ABC", "乐谱", "音乐"],
-  "version": "0.1.8",
+  "version": "0.1.9",
   "targets": {
     "desktop": {
       "minAppVersion": "0.59.4"
