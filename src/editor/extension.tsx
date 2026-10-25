@@ -14,6 +14,8 @@ export const abcExtension = defineEditorExtension({
   elements: [
     defineEditorElement<AbcElement>({
       type: "abc",
+      dataVersion: 1,
+      collaboration: { textFields: ["content"] },
       kind: "block",
       drag: true,
       isVoid: true,

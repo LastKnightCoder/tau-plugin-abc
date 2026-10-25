@@ -12,15 +12,14 @@ export function AbcBlock({
   children,
   element,
 }: EditorElementRenderProps<AbcElement>) {
-  const { update, theme } = useSourceBlock(element);
+  const { theme } = useSourceBlock(element);
   return (
     <div {...attributes}>
       <SourceBlockEditor
         mode="text"
         title="乐谱"
         icon={Music}
-        initValue={element.content}
-        onChange={(content) => update({ content })}
+        field="content"
         element={element}
         center
       >
