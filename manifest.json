@@ -1,7 +1,7 @@
 {
   "id": "tau.abc",
   "name": "ABC 乐谱",
-  "description": "在桌面和 Android 文档中插入、编辑和预览 ABC 乐谱。",
+  "description": "在桌面、Android 和 iOS 文档中插入、编辑和预览 ABC 乐谱。",
   "categories": [
     "editor"
   ],
