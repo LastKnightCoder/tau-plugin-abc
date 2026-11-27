@@ -1,6 +1,6 @@
 # AI 开发指南
 
-- 使用 SDK 0.45.0与统一作者清单，同包声明 desktop/android/ios，保留节点身份与纯 Markdown Skill；实际设备验收独立记录，发布遵循用户明确授权。
+- 使用 SDK 0.63.0与统一作者清单，同包声明 desktop/android/ios，保留节点身份与纯 Markdown Skill；实际设备验收独立记录，发布遵循用户明确授权。
 
 - 先阅读 DEVELOPMENT.md、API.md、manifest.json 和 src/index.tsx，理解现有示例后再修改。
 - 定义文档节点前阅读 EDITOR.md，使用静态 editorExtensions ；渲染代码须能在浏览器运行，不为移动端或网页另写渲染组件。

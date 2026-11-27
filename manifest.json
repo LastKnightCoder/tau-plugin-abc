@@ -10,16 +10,41 @@
     "乐谱",
     "音乐"
   ],
-  "version": "0.1.12",
+  "i18n": {
+    "zh-TW": {
+      "name": "ABC 樂譜",
+      "description": "在桌面、Android 和 iOS 文件中插入、編輯和預覽 ABC 樂譜。",
+      "keywords": [
+        "ABC",
+        "樂譜",
+        "音樂"
+      ]
+    },
+    "en-US": {
+      "name": "ABC Sheet Music",
+      "description": "Insert, edit, and preview ABC music notation in documents on desktop, Android, and iOS.",
+      "keywords": [
+        "ABC",
+        "sheet music",
+        "music"
+      ]
+    }
+  },
+  "locales": [
+    "zh-CN",
+    "zh-TW",
+    "en-US"
+  ],
+  "version": "0.1.13",
   "targets": {
     "desktop": {
-      "minAppVersion": "0.59.5"
+      "minAppVersion": "0.68.0"
     },
     "android": {
-      "minAppVersion": "0.2.7"
+      "minAppVersion": "0.6.0"
     },
     "ios": {
-      "minAppVersion": "0.2.7"
+      "minAppVersion": "0.6.0"
     }
   }
 }
