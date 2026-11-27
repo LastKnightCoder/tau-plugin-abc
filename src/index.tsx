@@ -1,4 +1,5 @@
 import { editorMetrics } from "./metrics";
+import { messages } from "./i18n";
 import { definePlugin } from "@tau/plugins";
 import { abcExtension } from "./editor/extension";
 import { abcCodec } from "./editor/markdown";
@@ -8,6 +9,7 @@ declare const __PLUGIN_META__: { id: string; name: string; version: string };
 
 export default definePlugin({
   ...__PLUGIN_META__,
+  i18n: messages,
   editorExtensions: [abcExtension],
   editorMetrics,
   editorCodecs: [abcCodec],
